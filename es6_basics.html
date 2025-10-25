@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>ES6 Basics</title>
+
+    </head>
+    <body>
+        <h2>ES1</h2>
+        <p id="j1"></p>
+        <script>
+        let a=10;
+        const b=20;
+        console.log(`add: The result is ${a}`);
+        //
+        function add(x=2,y=3){
+            return `The sum is ${x+y}`;
+        }
+        document.getElementById("j1").innerHTML=`Function Addition:<br> ${add(5,15)}<br>`;
+        document.getElementById("j1").innerHTML+="<b>"+add()+"</b>";
+        ///
+        const arr1 = ["krish", 21, "developer"];
+    const arr2 = ["Ram",22, "designer"];
+    const arr3 = [...arr1, ...arr2]; 
+    console.log("New Array:", arr3);
+    ////
+          const sub = (x, y) => {
+      return x -y;
+    };
+    console.log("sub:", sub(100,71));
+
+
+
+
+        </script>
+    </body>
+</html>
