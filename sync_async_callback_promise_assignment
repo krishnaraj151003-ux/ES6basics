@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Sync, Async, Callback, Promise</title>
+    </head>
+    <body>
+        <h1>ASSIGNMENT</h1>
+        <h2>1.Synchronous Example</h2>
+        <button onclick="sync()">BUTTON1</button>
+        <p id="sync"></p>
+        <h2>2.Asynchronous Example with setTimeout</h2>
+        <button onclick="async1()">BUTTON2</button>
+        <p id="async1"></p>
+        <h2>3.Asynchronous Example with setinterval</h2>
+        <button onclick="async2()">BUTTON3</button>
+        <p id="async2"></p>
+        <h2>4.Callback Example</h2>
+        <p id="callback"></p>
+        <h2>5.Promise Example</h2>
+        <p id="promise"></p>
+        <script>
+            //////////////
+            function sync() {
+                document.getElementById("sync").textContent = "Synchronous Execution";
+                
+                for(let i=1;i<=5;i++){
+                    document.getElementById("sync").textContent= `Repeat process: ${i}`;
+                }
+            }
+            //////////////
+            function async1() {
+                document.getElementById("async1").innerText = "Asynchronous Execution Begins............";
+                setTimeout(() => {
+                    
+                        document.getElementById("async1").innerText= `Process of timeout shows after 4 seconds`;
+                    
+                    
+                }, 2000);
+                document.getElementById("async1").innerText = "This line executes before timeout completes.";
+                
+                
+            }
+            //////////////
+            function async2() {
+                
+                let count = 0;
+                const hi = setInterval(() => {
+                
+                    document.getElementById("async2").innerText= `Interval count: ${count++}`;
+                    if(count === 5){
+                        clearInterval(hi);
+                        document.getElementById("async2").innerText += " - Interval Stopped after 5 counts.";
+                    }
+                }, 1000);
+                
+            }
+            //////////////
+            function calculate(a,b,Callback)
+            {
+                let sum = a + b;
+                Callback(sum);
+            }
+            function result(result)
+            {
+                document.getElementById("callback").innerText += `The sum is: ${result}`;
+            }
+            calculate(5,10,result);
+            //////////////
+            let promise = new Promise(function(resolve, reject) {
+                let x = 0;
+                if (x == 0) {
+                    resolve("Promise resolved successfully.");
+                } else {
+                    reject("Promise rejected.");
+                }
+            });
+            promise
+            .then(function(value) {
+                document.getElementById("promise").innerText += `${value}`;
+            })
+            .catch(function(error) {
+                document.getElementById("promise").innerText += `${error}`;
+            });
+
+            
+        </script>
+    </body>
+</html>
+                
